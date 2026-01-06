@@ -38,11 +38,11 @@ function ChatWindow() {
   useEffect(() => {
     if (prompt && reply) {
       setprevChats(
-        (prevChats) => (
-          [...prevChats],
+        (prevChats) => [
+          ...prevChats,
           { role: "user", content: prompt },
           { role: "assistant", content: reply }
-        )
+        ]
       );
     }
     setPrompt("")
@@ -61,7 +61,7 @@ function ChatWindow() {
         </div>
       </div>
       <Chat></Chat>
-      {loading && <PropagateLoader color="white" />}
+      {loading && <PropagateLoader color="white"  className= "loader" />}
 
       <div className="chatInput">
         <div className="inputBox">
