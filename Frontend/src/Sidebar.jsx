@@ -20,13 +20,13 @@ function Sidebar() {
     try {
       const response = await fetch("http://localhost:8080/api/thread");
       const res = await response.json();
-    //   console.log(res);
+      //   console.log(res);
       //threadid,title -> filtered data
       const filteredData = res.map((thread) => ({
         threadId: thread.threadId,
         title: thread.title,
       }));
-    //   console.log(filteredData);
+      //   console.log(filteredData);
       setAllThreads(filteredData);
     } catch (e) {
       console.log(e);
@@ -51,9 +51,27 @@ function Sidebar() {
       );
       const res = await response.json();
       console.log(res);
-      setprevChats(res)
-      setNewChat(false)
-      setReply(null)
+      setprevChats(res);
+      setNewChat(false);
+      setReply(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  let deleteThread = async (newThreadId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/thread/${newThreadId}`,
+        { method: "DELETE" }
+      );
+      const res = await response.json();
+      console.log(res)
+      //rerendering all threads
+      setAllThreads(prev=>prev.filter(thread=>thread.threadId !== newThreadId))
+      if(newThreadId === currThreadId){
+        createNewChat()
+      }
+    
     } catch (err) {
       console.log(err);
     }
@@ -73,8 +91,17 @@ function Sidebar() {
         {/* {history}*/}
         <ul className="history">
           {allThreads.map((el, idx) => (
-            <li key={idx} onClick={() => changeThread(el.threadId)}>
+            <li key={idx} onClick={() => changeThread(el.threadId)}
+            className={el.threadId === currThreadId ? "highlighted":" "}
+            >
               {el.title}
+              <i
+                class="fa-solid fa-trash"
+                onClick={(e) => {
+                  e.stopPropagation(); // to stop event bubbling
+                  deleteThread(el.threadId);
+                }}
+              ></i>
             </li>
           ))}
         </ul>

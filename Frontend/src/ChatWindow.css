@@ -16,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: solid white;
 }
 
 .navbar span {
@@ -24,6 +25,7 @@
 
 .userIconDiv {
     margin: 1rem 2rem;
+ 
 }
 
 .userIcon {
@@ -36,6 +38,8 @@
     justify-content: center;
     cursor: pointer;
     margin: 1rem;
+    position: relative;
+       right: 2rem;
 }
 
 /* chat input */
@@ -45,6 +49,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .inputBox {
@@ -101,7 +106,7 @@ input:focus {
 .dropDown {
     position: absolute;
     top: 4rem;
-    right: 4rem;
+    right: 1rem;
     width: 150px;
 
     background-color: #323232;
@@ -113,6 +118,8 @@ input:focus {
 }
 
 .dropDownItem {
+        display: flex;
+justify-content: space-between;
     font-size: 0.9rem;
     margin: 0.3rem 0rem;
     padding: 0.5rem 0.2rem;
