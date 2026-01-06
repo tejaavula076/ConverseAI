@@ -7,13 +7,13 @@ function Sidebar() {
       <section className="sidebar">
         <button>
           <img
-            src="../public/converse-ai-icon.png"
+            src="/converse-ai-icon.png"
             alt="gptlogo"
             className="logo"
           ></img>
           <span>
             {" "}
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i className="fa-solid fa-pen-to-square"></i>
           </span>
         </button>
 
