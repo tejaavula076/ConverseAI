@@ -12,8 +12,8 @@ function ChatWindow() {
     reply,
     setReply,
     currThreadId,
-    setcurrThreadId,
-    prevChats,
+    // setcurrThreadId,
+    // prevChats,
     setprevChats,
   } = useContext(myContext);
   const getReply = async () => {

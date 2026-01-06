@@ -1,12 +1,13 @@
 import "./Chat.css";
 import React, { useContext, useState, useEffect } from "react";
-import { MyContext } from "./MyContext";
+
+import { myContext } from "./MyContext.jsx";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
 function Chat() {
-    const {newChat, prevChats, reply} = useContext(MyContext);
+    const {newChat, prevChats, reply} = useContext(myContext);
     const [latestReply, setLatestReply] = useState(null);
 
     useEffect(() => {
@@ -19,6 +20,7 @@ function Chat() {
         if(!prevChats?.length) return;
 
         const content = reply.split(" "); //individual words
+        console.log(reply.split(""))
 
         let idx = 0;
         const interval = setInterval(() => {
