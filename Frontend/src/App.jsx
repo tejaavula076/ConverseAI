@@ -5,7 +5,7 @@ import ChatWindow from "./ChatWindow";
 import { myContext } from "./MyContext.jsx";
 import { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
-import "./app.css";
+import "./App.css";
 function App() {
   const [prompt, setPrompt] = useState("");
   const [reply, setReply] = useState(null);
