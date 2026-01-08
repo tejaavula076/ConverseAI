@@ -9,9 +9,10 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://converseai-frontend.netlify.app/",
-  process.env.FRONTEND_URL, // Netlify URL
+  "https://converseai-frontend.netlify.app",
+  process.env.FRONTEND_URL,
 ].filter(Boolean);
+
 
 app.use(cors({
   origin: (origin, cb) => {
