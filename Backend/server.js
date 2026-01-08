@@ -9,6 +9,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
+  "https://converseai-frontend.netlify.app/",
   process.env.FRONTEND_URL, // Netlify URL
 ].filter(Boolean);
 
