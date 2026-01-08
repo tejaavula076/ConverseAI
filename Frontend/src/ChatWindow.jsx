@@ -27,7 +27,7 @@ function ChatWindow() {
       body: JSON.stringify({ message: prompt, threadId: currThreadId }),
     };
     try {
-      const response = await fetch("http://localhost:8080/api/chat", options);
+      const response = await fetch("https://converseai-backend.onrender.com/api/chat", options);
       const res = await response.json();
       setReply(res.reply);
       console.log(res);

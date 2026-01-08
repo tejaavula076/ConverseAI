@@ -18,7 +18,7 @@ function Sidebar() {
   } = useContext(myContext);
   const getAllThreaads = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/thread");
+      const response = await fetch("https://converseai-backend.onrender.com/api/thread");
       const res = await response.json();
       //   console.log(res);
       //threadid,title -> filtered data
@@ -47,7 +47,7 @@ function Sidebar() {
     setcurrThreadId(newThreadId);
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${newThreadId}`
+        `https://converseai-backend.onrender.com/api/thread/${newThreadId}`
       );
       const res = await response.json();
       console.log(res);
@@ -61,7 +61,7 @@ function Sidebar() {
   let deleteThread = async (newThreadId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${newThreadId}`,
+        `https://converseai-backend.onrender.com/api/thread/${newThreadId}`,
         { method: "DELETE" }
       );
       const res = await response.json();
