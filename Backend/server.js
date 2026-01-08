@@ -4,9 +4,25 @@ import cors from "cors";
 import mongoose from "mongoose";
 import chatRoutes from "./routes/chat.js"
 const app = express();
-const PORT = 8080;
+const PORT =  process.env.PORT || 8080;
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.FRONTEND_URL, // Netlify URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, cb) => {
+    // allow Postman/curl (no origin)
+    if (!origin) return cb(null, true);
+    if (allowedOrigins.includes(origin)) return cb(null, true);
+    return cb(new Error(`CORS blocked for origin: ${origin}`));
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  credentials: true,
+}));
+
 app.use("/api",chatRoutes)
 app.listen(PORT, () => {
   console.log(`I am listening to the port ${PORT}`);
